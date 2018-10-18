@@ -44,6 +44,8 @@
                            出现错误之后可以返回fallback 信息
                            结合Feign一起使用时候 还需要进行Feign的熔断配置
                            服务降级(是在客户端实现的)
+                    Hystrix DashBoard Turbine(基于Hytrix DashBoard 加密微服务的访问操作，需要这种安全策略,追加web的安全策略配置 WebSecurityConfig web.ignoring.anyMatchers("/hystrix.steam","/turbine.steam"))
+                               
                            
     服务网关 Netflix Zuul(路由转发和过滤 默认和Ribbon结合实现负载均衡功能   一般接口不直接暴露给调用端使用 而是经过API网关根据相应请求路由到对应服务)
     分布式配置 Spring Cloud Config
@@ -103,7 +105,12 @@
     以及过滤器的禁用    
 
 
-    Zuul服务降级
+    Zuul服务降级（建议还是用Hytrix降级服务）
+    
+    csrf 跨站请求安全配置
+    
+    上传操作无法使用Feign 只能通过HttpClient完成模拟上传请求
+    
         
         
          
