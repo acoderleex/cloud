@@ -61,6 +61,8 @@
                           本地系统如果想要进行刷新 ，用户必须要有ACTUATOR角色（WebSecutityConfig）
                           
     Spring Cloud Stream 就是使用基于消息系统的微服务处理架构
+                        
+                        
                                         
                            
     
