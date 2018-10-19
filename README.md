@@ -48,8 +48,21 @@
                                
                            
     服务网关 Netflix Zuul(路由转发和过滤 默认和Ribbon结合实现负载均衡功能   一般接口不直接暴露给调用端使用 而是经过API网关根据相应请求路由到对应服务)
-    分布式配置 Spring Cloud Config
-    消息总线   Spring Cloud Bus
+    分布式配置 Spring Cloud Config  进行配置文件(application.yml)的管理   git配置  
+                                  application.yml是用户级别的资源配置
+                                  bootstrap.yml是系统级别的配置 其优先级会更高一点
+                                     
+    消息总线   Spring Cloud Bus 必须要有一个明确的消息服务组件,而这种服务组件一般会有两种处理模式: RabbitMQ 和 Kafka
+                           
+                          /bus/*执行器命名空间下还有一些http端点。目前有两个实施。第一个/bus/env发送密钥/值对来更新每个节点的Spring环境。第二个，/bus/refresh，将重新加载每个应用程序的配置，就好像他们在他们的/refresh端点上都被ping过。     
+                           
+                          @RefreshScope注解 也不是所有的微服务配置都需要更新 所以要配置一个类  将所有可能动态获取的配置内容保存起来 以供到处引用
+                               
+                          本地系统如果想要进行刷新 ，用户必须要有ACTUATOR角色（WebSecutityConfig）
+                          
+    Spring Cloud Stream 就是使用基于消息系统的微服务处理架构
+                                        
+                           
     
 #6.Spring Cloud 杂记 
 
